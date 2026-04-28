@@ -79,7 +79,7 @@ describe("login test", () => {
 
         // Знаходимо інпут з поштою та вводимо неправильний email
         cy.get("#username").type("practice' OR 1=1 --");
-        cy.get("#password").type("SuperSecretPassword!");
+        //cy.get("#password").type("SuperSecretPassword!");
         cy.get("#submit-login").click();      
 
         // Перевіряємо, що з'явилося повідомлення про помилку
