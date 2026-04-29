@@ -224,15 +224,9 @@ npx cucumber-js --tags 'not @skip'
 
 Маєш питання чи пропозиції? Напиши мені:
 
-- GitHub: [@your-username](https://github.com/your-username)
-- LinkedIn: [Your Name](https://linkedin.com/in/your-profile)
-- Email: your.email@example.com
+- GitHub: [@Oleksii](https://github.com/Oleksii97)
+- LinkedIn: [Oleksii](https://pl.linkedin.com/in/oleksii-kudriavtsev)
 
----
-
-## 📄 Ліцензія
-
-Цей проєкт використовується в освітніх цілях. Шпаргалка створена на основі матеріалів курсу GoIT та переструктурована для персонального використання.
 
 ---
 
