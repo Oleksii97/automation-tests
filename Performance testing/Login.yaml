@@ -1,0 +1,67 @@
+config:
+  target: "https://api.example.com"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      rampTo: 20
+      name: Warm up
+
+    - duration: 120
+      arrivalRate: 20
+      rampTo: 50
+      name: Normal load
+
+    - duration: 60
+      arrivalRate: 50
+      rampTo: 100
+      name: Stress / spike
+
+  payload:
+    path: "users.csv"
+    fields:
+      - "username"
+      - "password"
+
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+  plugins:
+    ensure:
+      thresholds:
+        - http.response_time.p95: 300
+        - http.response_time.p99: 500
+        - http.codes.200: 95
+
+scenarios:
+  - name: Login flow
+    flow:
+
+      # 1. Think time (реалістична поведінка)
+      - think: 2
+
+      # 2. Login request
+      - post:
+          url: "/auth/login"
+          json:
+            username: "{{ username }}"
+            password: "{{ password }}"
+          capture:
+            - json: "$.token"
+              as: "authToken"
+
+      # 3. Перевірка що токен є
+      - think: 1
+
+      # 4. Авторизований запит
+      - get:
+          url: "/user/profile"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+
+      # 5. Ще одна дія (імітація юзера)
+      - think: 1
+      - get:
+          url: "/dashboard"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
