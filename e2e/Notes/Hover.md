@@ -5,6 +5,20 @@
 ✔ анімації через :hover
 ✔ production-like поведінка
 
+1) Встановити плагін
+npm install cypress-real-events
+
+2) Підключити плагін
+
+відкрий файл:
+
+cypress/support/e2e.js
+
+і додай:
+
+import "cypress-real-events";
+
+
 
 describe("Hover Test", () => {
     it("should display tooltip on hover", () => {
@@ -18,6 +32,8 @@ describe("Hover Test", () => {
 });
 
 
+
+Або без інсталяцйії плагіна
 
 якщо логіка працює через:
 
