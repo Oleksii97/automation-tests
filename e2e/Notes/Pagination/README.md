@@ -12,9 +12,12 @@ cypress/
 ├── e2e/
 │   └── pagination.cy.js       # Основний файл тестів (6 контекстів, 18+ тестів)
 ├── support/
-│   └── commands.js            # Кастомні команди Cypress
+│   └── commands.js            # Кастомні команди Cypress  ← cypress/support/commands.js
 └── cypress.config.js
 ```
+
+> ⚠️ **Увага:** кастомні команди знаходяться саме у `cypress/support/commands.js`.  
+> Не плутати з `cypress/e2e/` — туди кладуть лише тестові файли (`*.cy.js`).
 
 ---
 
