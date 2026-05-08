@@ -206,7 +206,3 @@ npx cypress run --spec "cypress/e2e/pagination.cy.js"
 
 ---
 
-## 👤 Автор
-
-> Написано з урахуванням best practices автоматизованого тестування.  
-> Якщо є питання або пропозиції — відкривайте issue або pull request.
