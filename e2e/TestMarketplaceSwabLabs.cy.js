@@ -1,6 +1,9 @@
 describe("Log in tests", () => {
+beforeEach(() => {
+    cy.visit("https://www.saucedemo.com");
+});
+
     it("Valid log in", () => {
-        cy.visit("https://www.saucedemo.com");
         cy.get("#user-name")
         .should("be.visible")
         .type("standard_user");
@@ -17,7 +20,6 @@ describe("Log in tests", () => {
     });
 
      it("Invalid login", () => {
-        cy.visit("https://www.saucedemo.com");
         cy.get("#user-name").type("wewe");
         cy.get("#password").type("secret_sauce");
         cy.get("#login-button").click();
@@ -25,7 +27,6 @@ describe("Log in tests", () => {
     });
 
        it("Invalid password", () => {
-        cy.visit("https://www.saucedemo.com");
         cy.get("#user-name").type("standard_user");
         cy.get("#password").type("secret_sauc");
         cy.get("#login-button").click();
@@ -33,8 +34,6 @@ describe("Log in tests", () => {
     });
 
      it("Login and password are empty", () => {
-        cy.visit("https://www.saucedemo.com");
-        
         cy.get("#login-button").click();
         cy.get("[data-test='error']").should("be.visible");
     });

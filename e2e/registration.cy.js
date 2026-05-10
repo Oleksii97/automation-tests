@@ -1,6 +1,9 @@
 describe("registration tests", () => {
-  it("Positive test", () => {
+beforeEach(() => {
     cy.visit("https://practice.expandtesting.com/register");
+});
+
+  it("Positive test", () => {
 
         cy.get("#username").type("Dartanaine");
         cy.get("#password").type("password123");
@@ -11,8 +14,7 @@ describe("registration tests", () => {
   });
 
     it("Negative test - password mismatch", () => { 
-        cy.visit("https://practice.expandtesting.com/register");
-        cy.get("#username").type("Dartanaine");
+               cy.get("#username").type("Dartanaine");
         cy.get("#password").type("password123");
         cy.get("#confirmPassword").type("password321")
         cy.get('button[type="submit"]').click();
@@ -21,7 +23,6 @@ describe("registration tests", () => {
   });
 
     it("Log in is empty", () => { 
-        cy.visit("https://practice.expandtesting.com/register");
         cy.get("#password").type("password123");
         cy.get("#confirmPassword").type("password123")
         cy.get('button[type="submit"]').click();
@@ -30,7 +31,6 @@ describe("registration tests", () => {
     });
 
     it("Password is empty", () => {
-        cy.visit("https://practice.expandtesting.com/register");
         cy.get("#username").type("Dartanaine");
         cy.get("#confirmPassword").type("password123")
         cy.get('button[type="submit"]').click();
@@ -39,7 +39,6 @@ describe("registration tests", () => {
     });
 
     it("Confirm password is empty", () => {
-        cy.visit("https://practice.expandtesting.com/register");
         cy.get("#username").type("Dartanaine");
         cy.get("#password").type("password123");
         cy.get('button[type="submit"]').click(); 
@@ -48,7 +47,6 @@ describe("registration tests", () => {
     });
 
     it("Password is too short", () => {
-        cy.visit("https://practice.expandtesting.com/register");
         cy.get("#username").type("Dartanaine");
         cy.get("#password").type("12");
         cy.get("#confirmPassword").type("12")
@@ -59,7 +57,6 @@ describe("registration tests", () => {
 
     it("incorrect username", () => {
 
-        cy.visit("https://practice.expandtesting.com/register");
         cy.get("#username").type("testtest.com");
         cy.get("#password").type("password123");
         cy.get("#confirmPassword").type("password123")
@@ -69,7 +66,6 @@ describe("registration tests", () => {
     });
 
     it("Space in password", () => {
-        cy.visit("https://practice.expandtesting.com/register");
         cy.get("#username").type("Dartanaine");
         cy.get("#password").type("password 123");
         cy.get("#confirmPassword").type("password 123")
@@ -79,7 +75,6 @@ describe("registration tests", () => {
     });
 
      it("SQL Injection", () => {
-        cy.visit("https://practice.expandtesting.com/register");
         cy.get("#username").type("Dartanaine' OR '1'='1");
         cy.get("#password").type("password123");
         cy.get("#confirmPassword").type("password123")
@@ -89,7 +84,6 @@ describe("registration tests", () => {
     });
 
      it("XSS Attack", () => {
-        cy.visit("https://practice.expandtesting.com/register");
         cy.get("#username").type("<script>alert('XSS')</script>");
         cy.get("#password").type("password123");
         cy.get("#confirmPassword").type("password123")
